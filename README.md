@@ -6,9 +6,14 @@ This is a [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introdu
 
 ## Features
 
-- Create translation keys
-- Get translation keys
-- Update translations
+- Create translation key
+- Update translation key
+- Update translations bulk
+- Get all translation keys
+- Get translation key details
+- Get tags
+- Create tag
+- Get languages
 - Get translations
 
 ## Installation
