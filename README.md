@@ -4,12 +4,19 @@
 
 This is a [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) server that provides tools for interacting with the SimpleLocalize API.
 
-## Features
+## Features (Tools)
 
-- Create translation keys
-- Get translation keys
-- Update translations
+- Create translation key
+- Update translation key
+- Update translations bulk
+- Get all translation keys
+- Get translation key details
+- Get tags
+- Create tag
+- Get languages
 - Get translations
+
+Feel free to add more tools by making a pull request or [creating a feature request](https://github.com/simplelocalize/simplelocalize-mcp-server/issues/new).
 
 ## Installation
 
@@ -21,6 +28,7 @@ To run the server in a client like Claude Desktop, Cursor or Windsurf, add the f
 {
   "mcpServers": {
     "simplelocalize": {
+      "type": "stdio",
       "command": "npx",
       "args": ["-y", "@simplelocalize/simplelocalize-mcp", "--api-key=SIMPLELOCALIZE_API_KEY"]
     }
