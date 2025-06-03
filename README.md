@@ -7,13 +7,13 @@ This is a [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introdu
 ## Features (Tools)
 
 - Create translation key
-- Update translation key
-- Update translations bulk
+- Update translations
 - Get all translation keys
 - Get translation key details
 - Get tags
 - Create tag
 - Get languages
+- Create languages
 - Get translations
 
 Feel free to add more tools by making a pull request or [creating a feature request](https://github.com/simplelocalize/simplelocalize-mcp-server/issues/new).
