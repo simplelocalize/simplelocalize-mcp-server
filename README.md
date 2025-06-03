@@ -4,7 +4,7 @@
 
 This is a [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) server that provides tools for interacting with the SimpleLocalize API.
 
-## Features
+## Features (Tools)
 
 - Create translation key
 - Update translation key
@@ -15,6 +15,8 @@ This is a [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introdu
 - Create tag
 - Get languages
 - Get translations
+
+Feel free to add more tools by making a pull request or [creating a feature request](https://github.com/simplelocalize/simplelocalize-mcp-server/issues/new).
 
 ## Installation
 
