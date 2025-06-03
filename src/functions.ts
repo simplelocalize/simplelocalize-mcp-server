@@ -1,41 +1,23 @@
 import { z } from "zod";
 import axios from "axios";
 import {
-  createTranslationKeyParameters,
+  createTranslationKeyBulkParameters,
   updateTranslationKeyParameters,
   updateTranslationsBulkParameters,
   getTranslationKeyDetailsParameters,
   createTagParameters,
   getTranslationsParameters,
+  createLanguageParameters,
 } from "./parameters.js";
 
 const BASE_URL = "https://api.simplelocalize.io";
 const CLIENT_NAME = "mcp-server";
 
-export const createTranslationKey = async (apiKey: string, params: z.infer<typeof createTranslationKeyParameters>) => {
+export const createTranslationKeyBulk = async (apiKey: string, params: z.infer<typeof createTranslationKeyBulkParameters>) => {
   try {
     const response = await axios.post(
-      `${BASE_URL}/api/v1/translation-keys`,
+      `${BASE_URL}/api/v1/translation-keys/bulk`,
       params,
-      {
-        headers: {
-          "X-SimpleLocalize-Token": apiKey,
-          "X-SimpleLocalize-Client": CLIENT_NAME,
-        },
-      }
-    );
-    return response?.data;
-  } catch (error) {
-    return error;
-  }
-};
-
-export const updateTranslationKey = async (apiKey: string, params: z.infer<typeof updateTranslationKeyParameters>) => {
-  try {
-    const { key, namespace, ...body } = params;
-    const response = await axios.patch(
-      `${BASE_URL}/api/v1/translation-keys?key=${encodeURIComponent(key)}${namespace ? `&namespace=${encodeURIComponent(namespace)}` : ""}`,
-      body,
       {
         headers: {
           "X-SimpleLocalize-Token": apiKey,
@@ -164,6 +146,24 @@ export const getTranslations = async (apiKey: string, params: z.infer<typeof get
           "X-SimpleLocalize-Client": CLIENT_NAME,
         },
         params,
+      }
+    );
+    return response?.data;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const createLanguage = async (apiKey: string, params: z.infer<typeof createLanguageParameters>) => {
+  try {
+    const response = await axios.post(
+      `${BASE_URL}/api/v1/languages`,
+      params,
+      {
+        headers: {
+          "X-SimpleLocalize-Token": apiKey,
+          "X-SimpleLocalize-Client": CLIENT_NAME,
+        },
       }
     );
     return response?.data;

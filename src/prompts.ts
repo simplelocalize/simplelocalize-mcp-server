@@ -1,15 +1,8 @@
 export const createTranslationKeyPrompt = `
-This tool will create a new translation key in your SimpleLocalize project.
-- 'key' is required and must be unique within the namespace.
-- 'namespace', 'description', 'codeDescription', 'tags', and 'charactersLimit' are optional.
-- Use 'charactersLimit' to restrict the length of translation values, or set to -1 for unlimited.
-`;
-
-export const updateTranslationKeyPrompt = `
-This tool will update an existing translation key in your SimpleLocalize project.
-- Provide 'key' (required) and optionally 'namespace'.
-- You can update 'description', 'codeDescription', 'tags', and 'charactersLimit'.
-- Fields left empty or null will not be updated.
+This tool will create multiple translation keys in your SimpleLocalize project in bulk.
+- Provide an array of translation key objects (max 100).
+- Each object must include 'key' and can include 'namespace', 'description', 'codeDescription', 'tags', and 'charactersLimit'.
+- It doesn't throw an error if translation key already exists, but it returns a list of failures.
 `;
 
 export const updateTranslationsBulkPrompt = `
@@ -55,4 +48,10 @@ This tool will list translations in your SimpleLocalize project.
 - You can filter by key, namespace, language, text, customerId, reviewStatus, and more.
 - Supports pagination with 'page' and 'size'.
 - Use 'text' to search for translations containing a specific value (min 3 characters).
+`;
+
+export const createLanguagePrompt = `
+This tool will create a new language in your SimpleLocalize project.
+- 'key' is required and must be a valid language key (e.g. en, pl_PL).
+- 'name' is optional and can be used to provide a display name for the language.
 `;

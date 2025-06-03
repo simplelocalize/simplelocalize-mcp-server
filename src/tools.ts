@@ -1,7 +1,6 @@
 import { z } from "zod";
 import {
-  createTranslationKeyParameters,
-  updateTranslationKeyParameters,
+  createTranslationKeyBulkParameters,
   updateTranslationsBulkParameters,
   getAllTranslationKeysParameters,
   getTranslationKeyDetailsParameters,
@@ -9,10 +8,10 @@ import {
   createTagParameters,
   getLanguagesParameters,
   getTranslationsParameters,
+  createLanguageParameters,
 } from "./parameters.js";
 import {
   createTranslationKeyPrompt,
-  updateTranslationKeyPrompt,
   updateTranslationsBulkPrompt,
   getAllTranslationKeysPrompt,
   getTranslationKeyDetailsPrompt,
@@ -20,6 +19,7 @@ import {
   createTagPrompt,
   getLanguagesPrompt,
   getTranslationsPrompt,
+  createLanguagePrompt,
 } from "./prompts.js";
 
 export type Tool = {
@@ -37,17 +37,10 @@ export type Tool = {
 
 const tools: Tool[] = [
   {
-    method: "create_translation_key",
-    name: "Create Translation Key",
+    method: "create_translation_key_bulk",
+    name: "Create Translation Key Bulk",
     description: createTranslationKeyPrompt,
-    parameters: createTranslationKeyParameters,
-    actions: { translationKeys: { write: true } },
-  },
-  {
-    method: "update_translation_key",
-    name: "Update Translation Key",
-    description: updateTranslationKeyPrompt,
-    parameters: updateTranslationKeyParameters,
+    parameters: createTranslationKeyBulkParameters,
     actions: { translationKeys: { write: true } },
   },
   {
@@ -91,6 +84,13 @@ const tools: Tool[] = [
     description: getLanguagesPrompt,
     parameters: getLanguagesParameters,
     actions: { languages: { read: true } },
+  },
+  {
+    method: "create_language",
+    name: "Create Language",
+    description: createLanguagePrompt,
+    parameters: createLanguageParameters,
+    actions: { languages: { write: true } },
   },
   {
     method: "get_translations",

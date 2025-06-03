@@ -1,12 +1,14 @@
 import { z } from "zod";
 
-export const createTranslationKeyParameters = z.object({
-  key: z.string().describe("The translation key name. Must be unique within the namespace."),
-  namespace: z.string().optional().describe("The namespace for the translation key. Defaults to an empty string if not provided."),
-  description: z.string().optional().describe("A description of the translation key."),
-  codeDescription: z.string().optional().describe("A description of the code context for the translation key."),
-  tags: z.array(z.string().describe("A tag for the translation key.")).optional().describe("Tags to categorize the translation key."),
-  charactersLimit: z.number().min(-1).optional().describe("The character limit for the translation key value. -1 means unlimited."),
+export const createTranslationKeyBulkParameters = z.object({
+  translationKeys: z.array(z.object({
+    key: z.string().describe("The translation key name. Must be unique within the namespace."),
+    namespace: z.string().optional().describe("The namespace for the translation key. Defaults to an empty string if not provided."),
+    description: z.string().optional().describe("A description of the translation key."),
+    codeDescription: z.string().optional().describe("A description of the code context for the translation key."),
+    tags: z.array(z.string().describe("A tag for the translation key.")).optional().describe("Tags to categorize the translation key."),
+    charactersLimit: z.number().min(-1).optional().describe("The character limit for the translation key value. -1 means unlimited."),
+  })).max(100).describe("Array of translation keys to create (max 100)."),
 });
 
 export const updateTranslationKeyParameters = z.object({
@@ -44,6 +46,11 @@ export const createTagParameters = z.object({
 });
 
 export const getLanguagesParameters = z.object({}).describe("No parameters required.");
+
+export const createLanguageParameters = z.object({
+  key: z.string().describe("The language key (e.g. en, pl_PL)."),
+  name: z.string().optional().describe("The language name (optional, e.g. English, Polish)."),
+});
 
 export const getTranslationsParameters = z.object({
   key: z.string().optional().describe("Filter by translation key name."),
