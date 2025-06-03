@@ -21,6 +21,7 @@ To run the server in a client like Claude Desktop, Cursor or Windsurf, add the f
 {
   "mcpServers": {
     "simplelocalize": {
+      "type": "stdio",
       "command": "npx",
       "args": ["-y", "@simplelocalize/simplelocalize-mcp", "--api-key=SIMPLELOCALIZE_API_KEY"]
     }
