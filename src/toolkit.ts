@@ -8,7 +8,7 @@ class SimpleLocalizeMCPServer extends McpServer {
   constructor({ apiKey }: { apiKey: string }) {
     super({
       name: "simplelocalize",
-      version: "0.0.1",
+      version: "0.0.2",
     });
 
     this._simpleLocalize = new SimpleLocalizeAPI(apiKey);
