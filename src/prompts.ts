@@ -47,6 +47,7 @@ export const getTranslationsPrompt = `
 This tool will list translations in your SimpleLocalize project.
 - You can filter by key, namespace, language, text, customerId, reviewStatus, and more.
 - Supports pagination with 'page' and 'size'.
+- Supports sort with 'sortBy' and 'sortOrder'.
 - Use 'text' to search for translations containing a specific value (min 3 characters).
 `;
 
