@@ -63,4 +63,6 @@ export const getTranslationsParameters = z.object({
   reviewStatus: z.enum(["REVIEWED", "NOT_REVIEWED", ""]).optional().describe("Filter by review status: REVIEWED, NOT_REVIEWED or empty."),
   page: z.number().optional().describe("Page number for pagination (default 0)."),
   size: z.number().optional().describe("Page size for pagination (default 100, max 2500)."),
+  sortBy: z.enum(["lastModifiedAt", ""]).optional().describe("Sort translations by lastModifiedAt or empty (default alphabetical sort)."),
+  sortOrder: z.enum(["asc", "desc", ""]).optional().describe("Sort order: asc, desc (default).")
 });
