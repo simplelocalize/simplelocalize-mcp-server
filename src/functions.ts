@@ -2,7 +2,6 @@ import { z } from "zod";
 import axios from "axios";
 import {
   createTranslationKeyBulkParameters,
-  updateTranslationKeyParameters,
   updateTranslationsBulkParameters,
   getTranslationKeyDetailsParameters,
   createTagParameters,
