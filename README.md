@@ -6,15 +6,20 @@ This is a [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introdu
 
 ## Features (Tools)
 
-- Create translation key
-- Update translations
+- Create translation key (bulk)
+- Update translations (bulk)
 - Get all translation keys
 - Get translation key details
+- Update translation key
+- Delete translation keys (bulk)
 - Get tags
 - Create tag
 - Get languages
 - Create languages
 - Get translations
+- Get hosting environments
+- Get hosting environment details
+- Publish translations to hosting
 
 Feel free to add more tools by making a pull request or [creating a feature request](https://github.com/simplelocalize/simplelocalize-mcp-server/issues/new).
 
@@ -68,7 +73,7 @@ For detailed setup guides, see:
          "command": "node",
          "args": ["path/to/simplelocalize-mcp-server/build/index.js"],
          "env": {
-           "SIMPLELOCALIZE_API_KEY": "your_api_key",
+           "SIMPLELOCALIZE_API_KEY": "your_api_key"
          }
        }
      }
