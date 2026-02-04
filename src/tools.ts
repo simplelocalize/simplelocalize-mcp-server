@@ -9,6 +9,11 @@ import {
   getLanguagesParameters,
   getTranslationsParameters,
   createLanguageParameters,
+  getEnvironmentsParameters,
+  getEnvironmentDetailsParameters,
+  publishTranslationsParameters,
+  updateTranslationKeyParameters,
+  deleteTranslationKeysBulkParameters,
 } from "./parameters.js";
 import {
   createTranslationKeyPrompt,
@@ -20,6 +25,11 @@ import {
   getLanguagesPrompt,
   getTranslationsPrompt,
   createLanguagePrompt,
+  getEnvironmentsPrompt,
+  getEnvironmentDetailsPrompt,
+  publishTranslationsPrompt,
+  updateTranslationKeyPrompt,
+  deleteTranslationKeysBulkPrompt,
 } from "./prompts.js";
 
 export type Tool = {
@@ -98,6 +108,41 @@ const tools: Tool[] = [
     description: getTranslationsPrompt,
     parameters: getTranslationsParameters,
     actions: { translations: { read: true } },
+  },
+  {
+    method: "update_translation_key",
+    name: "Update Translation Key",
+    description: updateTranslationKeyPrompt,
+    parameters: updateTranslationKeyParameters,
+    actions: { translationKeys: { write: true } },
+  },
+  {
+    method: "delete_translation_keys_bulk",
+    name: "Delete Translation Keys Bulk",
+    description: deleteTranslationKeysBulkPrompt,
+    parameters: deleteTranslationKeysBulkParameters,
+    actions: { translationKeys: { write: true } },
+  },
+  {
+    method: "get_environments",
+    name: "Get Environments",
+    description: getEnvironmentsPrompt,
+    parameters: getEnvironmentsParameters,
+    actions: { environments: { read: true } },
+  },
+  {
+    method: "get_environment_details",
+    name: "Get Environment Details",
+    description: getEnvironmentDetailsPrompt,
+    parameters: getEnvironmentDetailsParameters,
+    actions: { environments: { read: true } },
+  },
+  {
+    method: "publish_translations",
+    name: "Publish Translations",
+    description: publishTranslationsPrompt,
+    parameters: publishTranslationsParameters,
+    actions: { environments: { write: true }, translations: { write: true } },
   },
 ];
 

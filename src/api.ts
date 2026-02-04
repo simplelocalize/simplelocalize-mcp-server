@@ -8,6 +8,11 @@ import {
   getLanguages,
   getTranslations,
   createLanguage,
+  getEnvironments,
+  getEnvironmentDetails,
+  publishTranslations,
+  updateTranslationKey,
+  deleteTranslationKeysBulk,
 } from "./functions.js";
 
 class SimpleLocalizeAPI {
@@ -19,35 +24,37 @@ class SimpleLocalizeAPI {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async run(method: string, arg: any) {
-    if (method === "create_language") {
-      const output = JSON.stringify(await createLanguage(this.apiKey, arg));
-      return output;
-    } else if (method === "create_translation_key_bulk") {
-      const output = JSON.stringify(await createTranslationKeyBulk(this.apiKey, arg));
-      return output;
-    } else if (method === "update_translations_bulk") {
-      const output = JSON.stringify(await updateTranslationsBulk(this.apiKey, arg));
-      return output;
-    } else if (method === "get_all_translation_keys") {
-      const output = JSON.stringify(await getAllTranslationKeys(this.apiKey));
-      return output;
-    } else if (method === "get_translation_key_details") {
-      const output = JSON.stringify(await getTranslationKeyDetails(this.apiKey, arg));
-      return output;
-    } else if (method === "get_tags") {
-      const output = JSON.stringify(await getTags(this.apiKey));
-      return output;
-    } else if (method === "create_tag") {
-      const output = JSON.stringify(await createTag(this.apiKey, arg));
-      return output;
-    } else if (method === "get_languages") {
-      const output = JSON.stringify(await getLanguages(this.apiKey));
-      return output;
-    } else if (method === "get_translations") {
-      const output = JSON.stringify(await getTranslations(this.apiKey, arg));
-      return output;
-    } else {
-      throw new Error("Invalid method " + method);
+    switch (method) {
+      case "create_language":
+        return JSON.stringify(await createLanguage(this.apiKey, arg));
+      case "create_translation_key_bulk":
+        return JSON.stringify(await createTranslationKeyBulk(this.apiKey, arg));
+      case "update_translations_bulk":
+        return JSON.stringify(await updateTranslationsBulk(this.apiKey, arg));
+      case "get_all_translation_keys":
+        return JSON.stringify(await getAllTranslationKeys(this.apiKey));
+      case "get_translation_key_details":
+        return JSON.stringify(await getTranslationKeyDetails(this.apiKey, arg));
+      case "get_tags":
+        return JSON.stringify(await getTags(this.apiKey));
+      case "create_tag":
+        return JSON.stringify(await createTag(this.apiKey, arg));
+      case "get_languages":
+        return JSON.stringify(await getLanguages(this.apiKey));
+      case "get_translations":
+        return JSON.stringify(await getTranslations(this.apiKey, arg));
+      case "update_translation_key":
+        return JSON.stringify(await updateTranslationKey(this.apiKey, arg));
+      case "delete_translation_keys_bulk":
+        return JSON.stringify(await deleteTranslationKeysBulk(this.apiKey, arg));
+      case "get_environments":
+        return JSON.stringify(await getEnvironments(this.apiKey, arg));
+      case "get_environment_details":
+        return JSON.stringify(await getEnvironmentDetails(this.apiKey, arg));
+      case "publish_translations":
+        return JSON.stringify(await publishTranslations(this.apiKey, arg));
+      default:
+        throw new Error("Invalid method " + method);
     }
   }
 }
