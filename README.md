@@ -25,13 +25,13 @@ Feel free to add more tools by making a pull request or [creating a feature requ
 
 ## Installation
 
-To use the MCP server, you'll need an API key. You can create and manage API keys in **SimpleLocalize > Settings > Credentials**:
+To use the MCP server, you'll need an API key. You can create and manage API keys in **SimpleLocalize > Settings > Credentials -> Project API Key**:
 
 To run the server in a client like Claude Desktop, Cursor or Windsurf, add the following to your MCP config:
 
 ```json
 {
-  "mcpServers": {
+  "servers": {
     "simplelocalize": {
       "type": "stdio",
       "command": "npx",
@@ -68,7 +68,7 @@ For detailed setup guides, see:
 3. Update client to use the local build:
    ```json
    {
-     "mcpServers": {
+     "servers": {
        "simplelocalize": {
          "command": "node",
          "args": ["path/to/simplelocalize-mcp-server/build/index.js"],
