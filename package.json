@@ -9,6 +9,7 @@
   "bin": {
     "simplelocalize": "./build/index.js"
   },
+  "packageManager": "pnpm@10.13.1",
   "scripts": {
     "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
     "dev": "tsc --watch",
