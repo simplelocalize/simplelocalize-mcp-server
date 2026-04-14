@@ -8,13 +8,13 @@ class SimpleLocalizeMCPServer extends McpServer {
   constructor({ apiKey }: { apiKey: string }) {
     super({
       name: "simplelocalize",
-      version: "0.0.2",
+      version: "0.4.0",
     });
 
     this._simpleLocalize = new SimpleLocalizeAPI(apiKey);
 
     tools.forEach((tool) => {
-      this.tool(tool.method, tool.description, tool.parameters.shape, async (arg: unknown, _extra: unknown) => {
+      this.tool(tool.method, tool.description, tool.parameters.shape, tool.annotations, async (arg: unknown, _extra: unknown) => {
         const result = await this._simpleLocalize.run(tool.method, arg);
         return {
           content: [

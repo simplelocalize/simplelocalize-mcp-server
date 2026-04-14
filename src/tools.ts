@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { ToolAnnotations } from "@modelcontextprotocol/sdk/types.js";
 import {
   createTranslationKeyBulkParameters,
   updateTranslationsBulkParameters,
@@ -38,11 +39,28 @@ export type Tool = {
   description: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   parameters: z.ZodObject<any, any, any, any>;
-  actions: {
-    [key: string]: {
-      [action: string]: boolean;
-    };
-  };
+  annotations: ToolAnnotations;
+};
+
+const readOnly: ToolAnnotations = {
+  readOnlyHint: true,
+  destructiveHint: false,
+  idempotentHint: true,
+  openWorldHint: true,
+};
+
+const createOrUpdate: ToolAnnotations = {
+  readOnlyHint: false,
+  destructiveHint: false,
+  idempotentHint: false,
+  openWorldHint: true,
+};
+
+const destructive: ToolAnnotations = {
+  readOnlyHint: false,
+  destructiveHint: true,
+  idempotentHint: false,
+  openWorldHint: true,
 };
 
 const tools: Tool[] = [
@@ -51,98 +69,98 @@ const tools: Tool[] = [
     name: "Create Translation Key Bulk",
     description: createTranslationKeyPrompt,
     parameters: createTranslationKeyBulkParameters,
-    actions: { translationKeys: { write: true } },
+    annotations: createOrUpdate,
   },
   {
     method: "update_translations_bulk",
     name: "Update Translations Bulk",
     description: updateTranslationsBulkPrompt,
     parameters: updateTranslationsBulkParameters,
-    actions: { translations: { write: true } },
+    annotations: createOrUpdate,
   },
   {
     method: "get_all_translation_keys",
     name: "Get All Translation Keys",
     description: getAllTranslationKeysPrompt,
     parameters: getAllTranslationKeysParameters,
-    actions: { translationKeys: { read: true } },
+    annotations: readOnly,
   },
   {
     method: "get_translation_key_details",
     name: "Get Translation Key Details",
     description: getTranslationKeyDetailsPrompt,
     parameters: getTranslationKeyDetailsParameters,
-    actions: { translationKeys: { read: true } },
+    annotations: readOnly,
   },
   {
     method: "get_tags",
     name: "Get Tags",
     description: getTagsPrompt,
     parameters: getTagsParameters,
-    actions: { tags: { read: true } },
+    annotations: readOnly,
   },
   {
     method: "create_tag",
     name: "Create Tag",
     description: createTagPrompt,
     parameters: createTagParameters,
-    actions: { tags: { write: true } },
+    annotations: createOrUpdate,
   },
   {
     method: "get_languages",
     name: "Get Languages",
     description: getLanguagesPrompt,
     parameters: getLanguagesParameters,
-    actions: { languages: { read: true } },
+    annotations: readOnly,
   },
   {
     method: "create_language",
     name: "Create Language",
     description: createLanguagePrompt,
     parameters: createLanguageParameters,
-    actions: { languages: { write: true } },
+    annotations: createOrUpdate,
   },
   {
     method: "get_translations",
     name: "Get Translations",
     description: getTranslationsPrompt,
     parameters: getTranslationsParameters,
-    actions: { translations: { read: true } },
+    annotations: readOnly,
   },
   {
     method: "update_translation_key",
     name: "Update Translation Key",
     description: updateTranslationKeyPrompt,
     parameters: updateTranslationKeyParameters,
-    actions: { translationKeys: { write: true } },
+    annotations: createOrUpdate,
   },
   {
     method: "delete_translation_keys_bulk",
     name: "Delete Translation Keys Bulk",
     description: deleteTranslationKeysBulkPrompt,
     parameters: deleteTranslationKeysBulkParameters,
-    actions: { translationKeys: { write: true } },
+    annotations: destructive,
   },
   {
     method: "get_environments",
     name: "Get Environments",
     description: getEnvironmentsPrompt,
     parameters: getEnvironmentsParameters,
-    actions: { environments: { read: true } },
+    annotations: readOnly,
   },
   {
     method: "get_environment_details",
     name: "Get Environment Details",
     description: getEnvironmentDetailsPrompt,
     parameters: getEnvironmentDetailsParameters,
-    actions: { environments: { read: true } },
+    annotations: readOnly,
   },
   {
     method: "publish_translations",
     name: "Publish Translations",
     description: publishTranslationsPrompt,
     parameters: publishTranslationsParameters,
-    actions: { environments: { write: true }, translations: { write: true } },
+    annotations: destructive,
   },
 ];
 
