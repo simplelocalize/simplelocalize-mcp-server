@@ -6,20 +6,56 @@ This is a [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introdu
 
 ## Features (Tools)
 
-- Create translation key (bulk)
-- Update translations (bulk)
-- Get all translation keys
+This server covers the full [SimpleLocalize API](https://api.simplelocalize.io/openapi/docs).
+
+**Translation keys**
+
+- Get translation keys (with metadata, paginated) / get all translation keys (lightweight, v1 and v2)
 - Get translation key details
-- Update translation key
-- Delete translation keys (bulk)
-- Get tags
-- Create tag
-- Get languages
-- Create languages
+- Create translation key (single and bulk)
+- Update translation key (by key/namespace, or by ID)
+- Delete translation key (single and bulk)
+- Upload translation key screenshot (base64, local file, or bulk)
+
+**Translations**
+
 - Get translations
-- Get hosting environments
+- Update translation (single and bulk)
+
+**Auto-translation**
+
+- Auto-translate text (single, synchronous, not saved to the project)
+- Create auto-translation jobs (async, saved to the project)
+- Get auto-translation jobs / get auto-translation job
+
+**Tags, languages & customers**
+
+- Get/create/update/delete tags
+- Get/create/update/delete languages
+- Get/create/update/delete customers (for customer-specific translations)
+
+**Hosting & publishing**
+
+- Get/create hosting environments
 - Get hosting environment details
 - Publish translations to hosting
+
+**Import, export & activity**
+
+- Import translations from a local file
+- Export translations to downloadable file(s)
+- Get supported file formats
+- Get project activity / get activity changes
+
+**Glossary**
+
+- Get glossary entries
+- Create glossary entry
+- Delete glossary entry
+
+**Project**
+
+- Get project details
 
 Feel free to add more tools by making a pull request or [creating a feature request](https://github.com/simplelocalize/simplelocalize-mcp-server/issues/new).
 
