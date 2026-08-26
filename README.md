@@ -4,18 +4,32 @@
 
 This is a [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) server that provides tools for interacting with the SimpleLocalize API.
 
-## Features (Tools)
+## How to setup
 
-This server covers the full [SimpleLocalize API](https://api.simplelocalize.io/openapi/docs).
+```
+{
+  "mcpServers": {
+    "simplelocalize": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@simplelocalize/simplelocalize-mcp",
+        "--api-key=PROJECT_API_KEY"
+      ]
+    }
+  }
+}
+```
+
+## Features (Tools)
 
 **Translation keys**
 
-- Get translation keys (with metadata, paginated) / get all translation keys (lightweight, v1 and v2)
-- Get translation key details
-- Create translation key (single and bulk)
-- Update translation key (by key/namespace, or by ID)
-- Delete translation key (single and bulk)
-- Upload translation key screenshot (base64, local file, or bulk)
+- Get translation keys
+- Create translation key
+- Update translation key
+- Delete translation key
+- Upload translation key screenshot (base64 or file)
 
 **Translations**
 
@@ -24,15 +38,16 @@ This server covers the full [SimpleLocalize API](https://api.simplelocalize.io/o
 
 **Auto-translation**
 
-- Auto-translate text (single, synchronous, not saved to the project)
-- Create auto-translation jobs (async, saved to the project)
-- Get auto-translation jobs / get auto-translation job
+- Auto-translate text
+- Create auto-translation jobs
+- Get auto-translation jobs
 
 **Tags, languages & customers**
 
+
 - Get/create/update/delete tags
 - Get/create/update/delete languages
-- Get/create/update/delete customers (for customer-specific translations)
+- Get/create/update/delete customers
 
 **Hosting & publishing**
 
@@ -45,7 +60,7 @@ This server covers the full [SimpleLocalize API](https://api.simplelocalize.io/o
 - Import translations from a local file
 - Export translations to downloadable file(s)
 - Get supported file formats
-- Get project activity / get activity changes
+- Get project activity
 
 **Glossary**
 
