@@ -6,6 +6,8 @@ This is a [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introdu
 
 ## How to setup
 
+Configure your `mcp.json` file and add 'simplelocalize':
+
 ```
 {
   "mcpServers": {
